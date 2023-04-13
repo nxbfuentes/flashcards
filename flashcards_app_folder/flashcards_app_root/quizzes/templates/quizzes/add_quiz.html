@@ -1,0 +1,14 @@
+{% extends 'quizzes/base.html' %}
+
+{% block content %}
+<div class="container">
+  <h2>Add Quiz</h2>
+  <form method="post">
+    {% csrf_token %}
+    <label for="title">Quiz Title:</label>
+    <input type="text" name="title" required><br><br>
+    <label for="num_questions">Number of Questions:</label>
+    <input type="number" name="num_questions" min="1" required><br><br>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Quiz</button>
+{% endblock %}

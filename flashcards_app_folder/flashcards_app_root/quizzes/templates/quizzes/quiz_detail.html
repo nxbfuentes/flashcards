@@ -1,0 +1,25 @@
+{% extends 'quizzes/base.html' %}
+{% load quiz_extras %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ quiz.title }}</h2>
+    <ol>
+        {% for question in questions %}
+        <li>
+            <strong>{{ question.content }}</strong><br>
+            {% if question.question_type == 'MC' %}
+            <ul>
+                {% for choice in question.choices|split_choices %}
+                <li>{{ choice }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <em>Fill in the Blank</em>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ol>
+    <a href="{% url 'quizzes' %}" class="btn btn-primary">Back to Quizzes</a>
+</div>
+{% endblock %}
